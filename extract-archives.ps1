@@ -8,20 +8,13 @@ $processedCount = 0
 
 foreach ($zip in $zips)
 {
-    $childPath = $zip.Name.Substring(0, 1)
-    if ($childPath -notmatch "[a-zA-Z]")
-    {
-        $childPath = "#"
-    }
-
     $fullName = $zip.FullName -replace "\[", "``[" `
         -replace "\]", "``]"
 
-    $outputPath = Join-Path -Path $zip.Directory -ChildPath $childPath
     $global:ProgressPreference = 'SilentlyContinue'
     
     try {
-        Expand-Archive -Path $fullName -DestinationPath $outputPath -Force
+        Expand-Archive -Path $fullName -DestinationPath $zip.Directory -Force
         Remove-Item -Path $fullName
     }
     catch
