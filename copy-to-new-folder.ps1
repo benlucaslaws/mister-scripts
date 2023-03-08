@@ -17,8 +17,7 @@ try {
 
     if ($destination -ne $file.FullName)
     {
-        Copy-Item -Path $fullName -Destination $outputPath -Force
-        Remove-Item -Path $fullName
+        Move-Item -Path $fullName -Destination $outputPath -Force
     }
 }
 catch
