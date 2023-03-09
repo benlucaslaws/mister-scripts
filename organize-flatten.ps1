@@ -13,7 +13,7 @@ foreach ($file in $files)
 
     $global:ProgressPreference = 'SilentlyContinue'
 
-    .\copy-to-new-folder.ps1 $file $path
+    .\move-to-new-folder.ps1 $file $path
 
     $processedCount += 1
     $processedPercent = [Math]::Floor($processedCount / $count * 100)

@@ -24,7 +24,7 @@ foreach ($file in $files)
         $outputPath = Join-Path -Path $file.Directory.FullName -ChildPath $childPath
         $global:ProgressPreference = 'SilentlyContinue'
 
-        .\copy-to-new-folder.ps1 $file $outputPath
+        .\move-to-new-folder.ps1 $file $outputPath
     }
 
     $processedCount += 1
