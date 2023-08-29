@@ -63,7 +63,7 @@ foreach ($file in $files)
     $tags = .\get-tags.ps1 $file
     $childPath = GetNewChildPath($tags)
 
-    $outputPath = Join-Path -Path $path -ChildPath $childPath
+    $outputPath = Join-Path -Path $file.Directory.FullName -ChildPath $childPath
     $global:ProgressPreference = 'SilentlyContinue'
 
     .\move-to-new-folder.ps1 $file $outputPath
