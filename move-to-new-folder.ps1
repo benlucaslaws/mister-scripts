@@ -8,10 +8,7 @@ try {
     $fullName = $file.FullName -replace "\[", "``[" `
         -replace "\]", "``]"
 
-    if (-not(Test-Path $outputPath))
-    {
-        New-Item $outputPath -ItemType Directory -Force | Out-Null
-    }
+    .\create-folder.ps1 $outputPath
 
     $destination = Join-Path -Path $outputPath -ChildPath $file.Name
 

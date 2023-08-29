@@ -8,7 +8,10 @@ function GetNewChildPath ($file) {
     {
         $childPath = "#"
     }
-
+    else
+    {
+        $childPath = $childPath.ToUpper()
+    }
     return $childPath
 }
 

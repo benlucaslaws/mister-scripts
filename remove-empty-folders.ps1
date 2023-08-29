@@ -8,6 +8,8 @@ foreach ($folder in $folders)
 {
     if ((Get-ChildItem $folder.FullName | Measure-Object).Count -eq 0)
     {
-        Remove-Item $folder.FullName | Out-Null
+        $fullName = $folder.FullName -replace "\[", "``[" `
+            -replace "\]", "``]"
+        Remove-Item $fullName | Out-Null
     }
 }
