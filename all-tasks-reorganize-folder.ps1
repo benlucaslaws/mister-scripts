@@ -2,8 +2,7 @@ param (
     [string]$path,
     [switch]$flattenFirst = $false,
     [switch]$moveDiscGamesToFolders = $false,
-    [switch]$removeEmptyFolders = $false,
-    [switch]$createCategoryFolders = $false
+    [switch]$removeEmptyFolders = $false
 )
 
 if ($flattenFirst)
@@ -11,6 +10,7 @@ if ($flattenFirst)
     .\organize-flatten.ps1 $path
 }
 
+.\organize-by-region.ps1 $path
 .\organize-by-first-letter.ps1 $path
 
 if ($moveDiscGamesToFolders)
@@ -21,9 +21,4 @@ if ($moveDiscGamesToFolders)
 if ($removeEmptyFolders)
 {
     .\remove-empty-folders.ps1
-}
-
-if ($createCategoryFolders)
-{
-    .\create-category-folders.ps1 $path
 }
