@@ -6,9 +6,9 @@ $7zipPath = "C:\Program Files\7-Zip\7z.exe"
 Set-Alias Start-SevenZip $7zipPath
 
 $archives = @()
-$archives += Get-ChildItem $path -Filter *.zip -Recurse
-$archives += Get-ChildItem $path -Filter *.rar -Recurse
-$archives += Get-ChildItem $path -Filter *.7z -Recurse
+$archives += Get-ChildItem -LiteralPath $path -Filter "*.zip" -Recurse
+$archives += Get-ChildItem -LiteralPath $path -Filter "*.rar" -Recurse
+$archives += Get-ChildItem -LiteralPath $path -Filter "*.7z" -Recurse
 
 
 $count = $archives.Count
@@ -20,7 +20,7 @@ foreach ($archive in $archives)
 
     $outputPath = $archive.Directory.FullName + "\" + $archive.Basename
 
-    if (-not(Test-Path $outputPath))
+    if (-not(Test-Path -LiteralPath $outputPath))
     {
         New-Item $outputPath -ItemType Directory -Force | Out-Null
     }
@@ -29,7 +29,7 @@ foreach ($archive in $archives)
     
     try {
         Start-SevenZip x -o"$outputPath" "$fullName" -r ;
-        Remove-Item -Path $fullName
+        Remove-Item -LiteralPath $fullName
     }
     catch
     {
@@ -40,5 +40,5 @@ foreach ($archive in $archives)
     $processedPercent = [Math]::Floor($processedCount / $count * 100)
 
     $global:ProgressPreference = 'Continue'
-    Write-Progress -Activity "Extracting $processedPercent%" -Status $archive.Name -PercentComplete $processedPercent
+    Write-Progress -Activity "Extracting files in $($path): $processedCount/$count ($processedPercent%)" -Status $archive.Name -PercentComplete $processedPercent
 }
