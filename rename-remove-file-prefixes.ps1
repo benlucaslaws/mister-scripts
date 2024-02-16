@@ -1,6 +1,6 @@
 param (
     [string]$path,
-    [string]$prefixFormat = "^\d{4} - "
+    [string]$prefixFormat = "^[zx\d]\d{3} - "
 )
 
 $files = Get-ChildItem -LiteralPath $path -Recurse -File

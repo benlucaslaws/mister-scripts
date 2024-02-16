@@ -44,6 +44,7 @@ $tagPriority = @(
     [Tag]::new("Latin America", "Latin America"),
     [Tag]::new("Argentina", "Argentina"),
     [Tag]::new("New Zealand", "New Zealand"),
+    [Tag]::new("Norway", "Norway"),
     [Tag]::new("Russia", "Russia"),
     [Tag]::new("Unknown", "Unknown")
 )
