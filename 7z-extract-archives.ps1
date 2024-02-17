@@ -18,7 +18,7 @@ foreach ($archive in $archives)
 {
     $fullName = $archive.FullName
 
-    $outputPath = $archive.Directory.FullName + "\" + $archive.Basename
+    $outputPath = $archive.Directory.FullName
 
     if (-not(Test-Path -LiteralPath $outputPath))
     {
